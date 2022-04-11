@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
+import "../styles/Home.css";
 import { Link } from 'react-router-dom';
 import {getProductsThunk,getCategoriesthunk,filterCategorythunk,filterCatethunk} from '../redux/actions'
 
@@ -27,15 +28,13 @@ console.log(categories)
      dispatch(filterCatethunk(cate));
  }
     return (
-        <div>
-            <h1>home</h1>
-
+        <div className='info' >
             <form onSubmit={searchCate}>
                 <input type="text" placeholder="search new category" 
                 value={cate}
                 onChange={e => setCate(e.target.value)} 
                  />
-                <button>search</button>
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
             <br />
 
