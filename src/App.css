@@ -7,12 +7,19 @@ body{
    overflow-x: hidden; 
   max-width: 100vw;
 }
+:root{
+  --green:#0BB126;
+  --yellow:#FFEA48;
+  --red:#f85555;
+  --darkred:#c03131;
+  --blue:#04215B;
+}
 nav{
   padding: 1rem 3rem;
-  background-color: yellow;
+  background-color: var(--yellow);
 }
 .App {
-  background-color: #282c34;
+  background-color: var(--blue);
   width:100vw;
   min-height: 100vh;
 }

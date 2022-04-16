@@ -30,16 +30,20 @@ console.log(categories)
     return (
         <>
         <div className='info' >
-            <div className='categories'>
-           
-                {
-                    categories.map((category) =>(
-                    <button key={category.id}
-                    onClick={()=> dispatch(filterCategorythunk(category.id))}>
-                        {category.name}
-                        </button> 
-                    ))
-                }
+           <div className='fluid'>
+                    <div className='categories'>
+                    
+                    {
+                        categories.map((category) =>(
+                        <button key={category.id}
+                        onClick={()=> dispatch(filterCategorythunk(category.id))}>
+                            {category.name}
+                            </button> 
+                        ))
+                    }
+                    <button> Login</button>
+                    <button> Credits</button>
+                    </div>
             </div>
             <form onSubmit={searchCate}>
                 <input type="text" placeholder="What are you looking for?" 
@@ -58,15 +62,15 @@ console.log(categories)
                         ) : (
                             products.map(product=>(
                                 <li key={product.id}>
-                        <Link to={`/product/${product.id}`}>
+                        <Link className="link" to={`/product/${product.id}`}>
                                 <div className='card-image'>
                                     <img src={product.productImgs[2]} alt="producto" /> 
                                 </div>  
                                 <div className='card-info'>
-                                    {product.title} 
-                                    {console.log(product)}
-                                    <p>Price </p>
-                                    <span>${product.price}</span>
+                                   <p>
+                                   <h4>{product.title} </h4>
+                                    <h3>${product.price}</h3>
+                                   </p>
                                     <button ><i class="fa-solid fa-cart-shopping"></i></button>
                                 </div>
                         </Link>  
