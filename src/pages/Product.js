@@ -5,6 +5,8 @@ import axios from "axios"
 import {useDispatch, useSelector} from 'react-redux';
 import{getProductsThunk} from '../redux/actions';
 import { Link } from 'react-router-dom';
+import "../styles/Product.css";
+import "../styles/Home.css"
 
 
 const Product = () => {
@@ -30,27 +32,37 @@ const Product = () => {
  
     return (
         
+          <div className='productDetail'>
+              
             <section>
-                {Producfound?.description}
-                <img src={Producfound?.productImgs[1]} alt="" />    
-                <h2></h2>
-            
-             
+                <div className='productDescription'><p>{Producfound?.description}</p>
+                <button > <i class="fa-solid fa-cart-shopping"> Add to cart</i> </button>
+                </div>
+
+                <div className='productDescription'>
+                <img  src={Producfound?.productImgs[2]} alt="" />                   
+                </div>
+            </section>
             <ul>
                  {
                     producFilter.map(product =>(
                         <li key={product.id}>
                         <Link to={`/product/${product.id}`}>
-                                 {product.title}
-                        </Link>   
-                           
-                        <img src={product.productImgs[0]} alt="" />
-                          
+                          <div className='card-image'>
+                            <img src={product.productImgs[2]} alt="producto" /> 
+                          </div>  
+                            <div className='card-info'>
+                                <p>
+                                <h4>{product.title} </h4>
+                                <h3>${product.price}</h3>
+                                </p>
+                            </div>                            
+                        </Link>  
                        </li> 
                     ))
                 } 
             </ul>
-            </section>
+          </div>
         
     );
 };
