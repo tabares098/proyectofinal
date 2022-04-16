@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect,useState} from 'react';
+import { Link } from 'react-router-dom';
 import "../styles/navbar.css";
 import axios from "axios"
 import { useNavigate } from 'react-router-dom';
@@ -28,7 +29,7 @@ const NavBar = e => {
     return (
      <div className='navbar'>
         <nav>
-                <strong>Amaxon</strong> 
+                <strong className="logo"><Link to={'/'}>Amaxon</Link></strong> 
                 {/* <i className="fa-solid fa-user"></i> */}
                 <form onSubmit={login} className={`login ${isLoginOpen ? 'open' : ''}`} >
                     <input type="email" value={email} onChange={e => setEmail(e.target.value)} 

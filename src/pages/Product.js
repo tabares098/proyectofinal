@@ -43,7 +43,8 @@ const Product = () => {
                 <img  src={Producfound?.productImgs[2]} alt="" />                   
                 </div>
             </section>
-            <ul>
+           <div className='categoryLike'>
+           <ul>
                  {
                     producFilter.map(product =>(
                         <li key={product.id}>
@@ -62,6 +63,7 @@ const Product = () => {
                     ))
                 } 
             </ul>
+           </div>
           </div>
         
     );

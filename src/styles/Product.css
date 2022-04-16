@@ -57,6 +57,9 @@
     background-color: rgb(234, 230, 230);;
   }
   li img{
-    max-height: 10rem;
+    height: 10rem;
     
+  }
+  .categoryLike{
+    margin:2rem auto;
   }
