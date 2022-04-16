@@ -1,0 +1,41 @@
+.navbar{
+   background-color: #ffffff;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav strong{
+    color: #f85555;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    width: 41vw;
+    padding: 14px 15px;
+}
+
+nav button{
+    background: none;
+    border: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav button i{
+    background: none;
+    border: none;
+    color: #ababab;
+    font-size: 1.4rem;
+    line-height: 0;
+    padding: 14px;
+    text-align: center;
+    width: 15%;
+}
+
+nav form input{
+    margin-top: 0.6rem;
+    padding: 0.2rem;
+}

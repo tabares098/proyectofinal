@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
+import "../styles/Home.css";
 import { Link } from 'react-router-dom';
 import {getProductsThunk,getCategoriesthunk,filterCategorythunk,filterCatethunk} from '../redux/actions'
 
@@ -27,45 +28,51 @@ console.log(categories)
      dispatch(filterCatethunk(cate));
  }
     return (
-        <div>
-            <h1>home</h1>
-
+        <div className='info' >
             <form onSubmit={searchCate}>
-                <input type="text" placeholder="search new category" 
+                <input type="text" placeholder="What are you looking for?" 
                 value={cate}
                 onChange={e => setCate(e.target.value)} 
                  />
-                <button>search</button>
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
-            <br />
+           
+            <div className='categories'>
+                {
+                    categories.map((category) =>(
+                    <button key={category.id}
+                    onClick={()=> dispatch(filterCategorythunk(category.id))}>
+                        {category.name}
+                        </button> 
+                    ))
+                }
+            </div>
 
-            {
-                categories.map((category) =>(
-                   <button key={category.id}
-                   onClick={()=> dispatch(filterCategorythunk(category.id))}>
-                       {category.name}
-                       </button> 
-                ))
-            }
-            <ul className="new-list">
+            <div className='ProductContainer'>
+                <ul className="new-list">
                 {
                     products.length === 0 ? (
                         <p>Me didn't Found news with the filter</p>
                     ) : (
                         products.map(product=>(
                        <li key={product.id}>
-                        <Link to={`/product/${product.id}`}>{product.title}
-                           </Link>   
-                           
-                           <img src={product.productImgs[0]} alt="" />
-                          
+                         <div className='card-image'>
+                            <img src={product.productImgs[0]} alt="producto" /> 
+                        </div>  
+                        <div className='card-info'>
+                            <Link to={`/product/${product.id}`}>{product.title}</Link>   
+                            <p>Price </p>
+                            <span>$ 20.000</span>
+                            <button><i class="fa-solid fa-cart-shopping"></i></button>  
+                        </div>
                        </li> 
                     ))
                     )
                 
                     
                 }
-            </ul>
+                </ul>
+            </div>
         </div>
     );
 };

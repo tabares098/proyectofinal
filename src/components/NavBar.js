@@ -1,10 +1,10 @@
 import React from 'react';
 import { useEffect,useState} from 'react';
-import navbar from "../styles/navbar.css"
+import "../styles/navbar.css";
 import axios from "axios"
 
 const NavBar = e => {
-    const [isLoginOpen, setisLoginOpen] = useState(false);
+    const [isLoginOpen, setisLoginOpen] = useState(true);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState("");
@@ -27,19 +27,11 @@ const NavBar = e => {
     return (
         <div className='navbar'>
             <nav>
-                 <strong>ecomerce</strong> <br />
+                 <strong>E-commerce</strong> <br />
                  <button onClick={() => setisLoginOpen(!isLoginOpen)}>
-                 Login
+                    <i className="fa-solid fa-user"></i>
                  </button>
-            </nav>
-            
-                <form onSubmit={login} className={`login ${isLoginOpen ? 'open' : ''}`} >
-
-
-                    
-                        
-                       
-
+                 <form onSubmit={login} className={`login ${isLoginOpen ? 'open' : ''}`} >
 
                                 <>
                           <input 
@@ -51,15 +43,12 @@ const NavBar = e => {
                                     value={password} 
                                     onChange={e => setPassword(e.target.value)} placeholder="Password" />
                               {loginError}
-                              <button>ingresar</button>
+                              <button><i className="fa-solid fa-right-to-bracket"></i></button>
                    
                                 </>
-                            )
                         
-                     
-                    
                 </form>
-            
+            </nav>           
             
         </div>
     );
