@@ -28,16 +28,10 @@ console.log(categories)
      dispatch(filterCatethunk(cate));
  }
     return (
+        <>
         <div className='info' >
-            <form onSubmit={searchCate}>
-                <input type="text" placeholder="What are you looking for?" 
-                value={cate}
-                onChange={e => setCate(e.target.value)} 
-                 />
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
-           
             <div className='categories'>
+           
                 {
                     categories.map((category) =>(
                     <button key={category.id}
@@ -47,25 +41,36 @@ console.log(categories)
                     ))
                 }
             </div>
+            <form onSubmit={searchCate}>
+                <input type="text" placeholder="What are you looking for?" 
+                value={cate}
+                onChange={e => setCate(e.target.value)} 
+                 />
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
 
             <div className='ProductContainer'>
                 <ul className="new-list">
                 {
                     products.length === 0 ? (
                         <p>Me didn't Found news with the filter</p>
-                    ) : (
-                        products.map(product=>(
-                       <li key={product.id}>
-                         <div className='card-image'>
-                            <img src={product.productImgs[0]} alt="producto" /> 
-                        </div>  
-                        <div className='card-info'>
-                            <Link to={`/product/${product.id}`}>{product.title}</Link>   
-                            <p>Price </p>
-                            <span>$ 20.000</span>
-                            <button><i class="fa-solid fa-cart-shopping"></i></button>  
-                        </div>
-                       </li> 
+                        ) : (
+                            products.map(product=>(
+                                <li key={product.id}>
+                        <Link to={`/product/${product.id}`}>
+                                <div className='card-image'>
+                                    <img src={product.productImgs[2]} alt="producto" /> 
+                                </div>  
+                                <div className='card-info'>
+                                    {product.title} 
+                                    {console.log(product)}
+                                    <p>Price </p>
+                                    <span>${product.price}</span>
+                                    <button ><i class="fa-solid fa-cart-shopping"></i></button>
+                                </div>
+                        </Link>  
+                        </li> 
                     ))
                     )
                 
@@ -73,7 +78,8 @@ console.log(categories)
                 }
                 </ul>
             </div>
-        </div>
+            </>
+        
     );
 };
 
