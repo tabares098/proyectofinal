@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
+import "../styles/Home.css";
 import { Link } from 'react-router-dom';
 import {getProductsThunk,getCategoriesthunk,filterCategorythunk,filterCatethunk} from '../redux/actions'
 
@@ -20,53 +21,73 @@ const Home = () => {
     },[])
 
 
-console.log(categories)
+
 
  const searchCate = e => {
      e.preventDefault();
      dispatch(filterCatethunk(cate));
  }
     return (
-        <div>
-            <h1>home</h1>
-
+        <>
+        <div className='info' >
+           <div className='fluid'>
+                    <div className='categories'>
+                    
+                    {
+                        categories.map((category) =>(
+                        <button key={category.id}
+                        onClick={()=> dispatch(filterCategorythunk(category.id))}>
+                            {category.name}
+                            </button> 
+                        ))
+                    }
+                    <button> Login</button>
+                    <button onClick={
+                        ()=>{
+                           window.alert("Thanks to : Dalia Macías Muñoz - Andres Tabares - Carlos Sarabia")
+                        }
+                    }> Credits</button>
+                    </div>
+            </div>
             <form onSubmit={searchCate}>
-                <input type="text" placeholder="search new category" 
+                <input type="text" placeholder="What are you looking for?" 
                 value={cate}
                 onChange={e => setCate(e.target.value)} 
                  />
-                <button>search</button>
+                <button><i className="fa-solid fa-magnifying-glass"></i></button>
             </form>
-            <br />
+        </div>
 
-            {
-                categories.map((category) =>(
-                   <button key={category.id}
-                   onClick={()=> dispatch(filterCategorythunk(category.id))}>
-                       {category.name}
-                       </button> 
-                ))
-            }
-            <ul className="new-list">
+            <div className='ProductContainer'>
+                <ul className="new-list">
                 {
                     products.length === 0 ? (
                         <p>Me didn't Found news with the filter</p>
-                    ) : (
-                        products.map(product=>(
-                       <li key={product.id}>
-                        <Link to={`/product/${product.id}`}>{product.title}
-                           </Link>   
-                           
-                           <img src={product.productImgs[0]} alt="" />
-                          
-                       </li> 
+                        ) : (
+                            products.map(product=>(
+                                <li key={product.id}>
+                        <Link className="link" to={`/product/${product.id}`}>
+                                <div className='card-image'>
+                                    <img src={product.productImgs[2]} alt="producto" /> 
+                                </div>  
+                                <div className='card-info'>
+                                   <p>
+                                   <h4>{product.title} </h4>
+                                    <h3>${product.price}</h3>
+                                   </p>
+                                    <button ><i className="fa-solid fa-cart-shopping"></i></button>
+                                </div>
+                        </Link>  
+                        </li> 
                     ))
                     )
                 
                     
                 }
-            </ul>
-        </div>
+                </ul>
+            </div>
+            </>
+        
     );
 };
 

@@ -1,13 +1,15 @@
 import React from 'react';
 import { useEffect,useState} from 'react';
-import navbar from "../styles/navbar.css"
+import { Link } from 'react-router-dom';
+import "../styles/navbar.css";
 import axios from "axios"
-
+import { useNavigate } from 'react-router-dom';
 const NavBar = e => {
-    const [isLoginOpen, setisLoginOpen] = useState(false);
+    const [isLoginOpen, setisLoginOpen] = useState(true);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState("");
+    const navigate = useNavigate();
 
     const login = e => {
         e.preventDefault();
@@ -21,47 +23,29 @@ const NavBar = e => {
         .catch(error => {
             setLoginError(error.response.data.message);
         })
-
+        console.log(localStorage.getItem("token"))
     }
-    console.log(localStorage.getItem("token"))
+    
     return (
-        <div className='navbar'>
-            <nav>
-                 <strong>ecomerce</strong> <br />
-                 <button onClick={() => setisLoginOpen(!isLoginOpen)}>
-                 Login
-                 </button>
-            </nav>
-            
+     <div className='navbar'>
+        <nav>
+                <strong className="logo"><Link to={'/'}>Amaxon</Link></strong> 
+                {/* <i className="fa-solid fa-user"></i> */}
                 <form onSubmit={login} className={`login ${isLoginOpen ? 'open' : ''}`} >
-
-
+                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} 
+                    placeholder="Email"/>
+                    <input type="password" value={password} 
+                    onChange={e => setPassword(e.target.value)} placeholder="Password" />
                     
-                        
-                       
-
-
-                                <>
-                          <input 
-                                type="email" 
-                                value={email} 
-                                onChange={e => setEmail(e.target.value)}  placeholder="Email"/>
-                                <br />
-                    <input type="password"
-                                    value={password} 
-                                    onChange={e => setPassword(e.target.value)} placeholder="Password" />
-                              {loginError}
-                              <button>ingresar</button>
-                   
-                                </>
-                            )
-                        
-                     
-                    
+                    <button  onClick={() => setisLoginOpen(!isLoginOpen)}>
+                        <i className="fa-solid fa-right-to-bracket login"></i></button>
                 </form>
-            
-            
-        </div>
+               
+        </nav>     
+
+        {loginError} 
+     
+     </div>
     );
 };
 

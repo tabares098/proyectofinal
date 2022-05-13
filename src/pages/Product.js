@@ -5,6 +5,8 @@ import axios from "axios"
 import {useDispatch, useSelector} from 'react-redux';
 import{getProductsThunk} from '../redux/actions';
 import { Link } from 'react-router-dom';
+import "../styles/Product.css";
+import "../styles/Home.css"
 
 
 const Product = () => {
@@ -26,31 +28,43 @@ const Product = () => {
         
     },[dispatch,Producfound]);
 
- console.log(producFilter)
+
  
     return (
         
+          <div className='productDetail'>
+              
             <section>
-                {Producfound?.description}
-                <img src={Producfound?.productImgs[1]} alt="" />    
-                <h2></h2>
-            
-             
-            <ul>
+                <div className='productDescription'><p>{Producfound?.description}</p>
+                <button > <i className="fa-solid fa-cart-shopping"> Add to cart</i> </button>
+                </div>
+
+                <div className='productDescription'>
+                <img  src={Producfound?.productImgs[2]} alt="" />                   
+                </div>
+            </section>
+           <div className='categoryLike'>
+           <ul>
                  {
                     producFilter.map(product =>(
                         <li key={product.id}>
                         <Link to={`/product/${product.id}`}>
-                                 {product.title}
-                        </Link>   
-                           
-                        <img src={product.productImgs[0]} alt="" />
-                          
+                          <div className='card-image'>
+                            <img src={product.productImgs[2]} alt="producto" /> 
+                          </div>  
+                            <div className='card-info'>
+                                
+                                <h4>{product.title} </h4>
+                                <h3>${product.price}</h3>
+                              
+                            </div>                            
+                        </Link>  
                        </li> 
                     ))
                 } 
             </ul>
-            </section>
+           </div>
+          </div>
         
     );
 };
