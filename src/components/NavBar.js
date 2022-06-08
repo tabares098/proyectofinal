@@ -3,13 +3,13 @@ import { useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
 import "../styles/navbar.css";
 import axios from "axios"
-import { useNavigate } from 'react-router-dom';
+
 const NavBar = e => {
     const [isLoginOpen, setisLoginOpen] = useState(true);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState("");
-    const navigate = useNavigate();
+ 
 
     const login = e => {
         e.preventDefault();
