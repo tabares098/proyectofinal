@@ -10,16 +10,16 @@ body{
 :root{
   --green:#0BB126;
   --yellow:#FFEA48;
-  --red:#f85555;
-  --darkred:#c03131;
+  --red:#5036c2;
+  --darkred:#318cc0;
   --blue:#04215B;
 }
 nav{
   padding: 1rem 3rem;
-  background-color: var(--yellow);
+  background-color: rgba(20, 188, 230, 0.945);
 }
 .App {
-  background-color: var(--blue);
+  background-color: rgb(58, 54, 51);
   width:100vw;
   min-height: 100vh;
 }
