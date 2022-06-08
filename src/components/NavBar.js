@@ -29,7 +29,7 @@ const NavBar = e => {
     return (
      <div className='navbar'>
         <nav>
-                <strong className="logo"><Link to={'/'}>Amaxon</Link></strong> 
+                <strong className="logo"><Link to={'/'}>Ecommerce</Link></strong> 
                 {/* <i className="fa-solid fa-user"></i> */}
                 <form onSubmit={login} className={`login ${isLoginOpen ? 'open' : ''}`} >
                     <input type="email" value={email} onChange={e => setEmail(e.target.value)} 
