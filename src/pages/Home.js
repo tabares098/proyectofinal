@@ -18,7 +18,7 @@ const Home = () => {
     useEffect(()=>{
     dispatch(getProductsThunk());
     dispatch(getCategoriesthunk());
-    },[])
+    },[dispatch])
 
 
 
