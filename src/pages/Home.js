@@ -44,7 +44,7 @@ const Home = () => {
                     <button> Login</button>
                     <button onClick={
                         ()=>{
-                           window.alert("Thanks to : Dalia Macías Muñoz - Andres Tabares - Carlos Sarabia")
+                           window.alert("Thanks to : julian Andres Tabares ")
                         }
                     }> Credits</button>
                     </div>
